@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos</title>
+  <style>
+    .progress {
+      height: 10px;
+      background-color: lightseagreen;
+      width: 0%;
+      position: fixed;
+      border-radius: 20px;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progressBar" class="progress"></div>
+  <h1>eventos</h1>
+
+
+  <!-- propiedad 1 -->
+  <button onclick="showMessage()" type=" button" id="showMessage">atributo</button>
+
+  <!-- propiedad 2 -->
+  <button id="btn" type="button">propiedad</button>
+
+  <!-- propiedad 3 -->
+  <button id="button">Usanfo un metodo</button>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <script>
+
+    /* tres formas de generar eventos */
+
+    /*  *1. atributo directamente en html
+ 
+     NO USAR YA QUE ES DE JUNIORS
+ 
+     *onclick="nombreDeLaFuncion()" */
+
+
+    // *1. atributo directamente en html
+    function showMessage() {
+      window.alert('hola desde un atributo 🚨')
+    }
+
+    // 2. propiedad
+    /* const document = {
+      header: {},
+      body: {
+        id: '',
+        classList: [],
+        style: {
+          color: '',
+          backgroundColor: ''
+        },
+        children: [
+          
+          ]
+        }
+      } */
+
+
+    /*2. mediante una propiedad */
+    const btn = document.querySelector('#btn')
+
+    /* 2. mediante propiedad => btn.te voy a agregar un evento*/
+    /* SOLO SE PUEDE AGREGAR UN EVENTO DEL MISMO TIPO A UN ELEMENTO */
+    btn.onclick = function () {
+      window.alert('Hola desde una propiedad 🚨')
+    }
+
+    /* 
+    * 3. AGREGANDO addEventListener
+
+    * permite agregar los eventos del mismo tipo que yo quiera 
+    * nos proporciona un objeto
+    */
+    const buttons = document.querySelector('#button')
+
+    /* se puede crear la funcion (handler) y despues pasarla mediante arguemeto */
+
+    /*  function handlerBtn() {
+       window.alert('usando un metodo')
+     }
+ 
+     buttons.addEventListener('click', handlerBtn) */
+
+    /* se puede crear todo juntos arrow function */
+    // buttons.addEventListener('evento', handler)
+    buttons.addEventListener('click', () => {
+      window.alert('usando un metodo')
+    })
+    buttons.addEventListener('click', () => {
+      window.alert('usando otro metodo')
+    })
+
+    /* eventos de teclado */
+    document.addEventListener('keydown', (e) => {
+      console.log(e.code)
+
+      if (e.code === 'KeyA') {
+        window.alert('left')
+      } else if (e.code === 'KeyW') {
+        window.alert('up')
+      } else if (e.code === 'KeyD') {
+        window.alert('right')
+      } else if (e.code === 'KeyS') {
+        window.alert('down')
+      }
+    })
+
+    /* evento scroll */
+
+    /* altura de todo el documeto html */
+    /* console.log(document.documentElement.scrollHeight) */
+
+    /* altura del viewport viewport */
+    /*  console.log(document.documentElement.clientHeight) */
+
+    /* distancia que se ha desplazado el scroll */
+    /* console.log(document.documentElement.scrollTop) */
+
+    const progressBar = document.querySelector('#progressBar')
+
+    window.addEventListener('scroll', () => {
+      const html = document.documentElement
+
+      const alturaPagina = html.scrollHeight - html.clientHeight
+      const scrollActual = html.scrollTop
+
+      const progress = scrollActual / alturaPagina
+      console.log(Math.round(progress * 100) + '%')
+
+      progressBar.style.width = Math.round(progress * 100) + '%'
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>

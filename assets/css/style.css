@@ -1,6 +1,7 @@
 :root {
   --body-color: #282C34;
   --card-color: #383c44;
+  --card-alt: #50555e;
   --text-color: #f0f0f0;
   --primary-color: #39bcdc;
 
@@ -33,6 +34,10 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  text-align: center;
+}
+
 /* *****MOBILE FIRST***** */
 
 /* *****HEADER***** */
@@ -51,7 +56,72 @@ header {
   color: white
 }
 
-/* *****K***** */
+/* *****PRODUCTS***** */
+.container__products {
+  /* border: 1px solid red; */
+  /* cuando los elementos tengan espacio se van a colocar uno a lado del otro */
+  display: grid;
+  /* repeat(ajuste automatico, minmax(250px en product se puso que la anchura maxima sea de 250px,  cuando tengan espacio dales 1fr) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* separacion entre targetas */
+  gap: 16px;
+  /* centrado de elementos horizontalmente */
+  justify-items: center;
+}
+
+.product {
+  /*  border: 1px solid blue; */
+  max-width: 250px;
+  width: 100%;
+  /* padding: 20px; */
+  background-color: var(--card-color);
+}
+
+.product__image {
+  position: relative;
+  background-color: var(--card-alt);
+  /* border: 1px solid purple; */
+  height: 100px;
+  /* centering image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* making it bigger */
+  font-size: 50px;
+}
+
+.product__body {
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__title {
+  margin: 0;
+}
+
+.btn {
+  /* to have this button stick to image's container we have to add position: relative to .product__image */
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: var(--primary-color);
+  color: wheat;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+}
+
 /* *****K***** */
 /* *****K***** */
 /* *****K***** */
